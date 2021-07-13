@@ -1,0 +1,35 @@
+@import "../../Scss_Partials/size";
+.home {
+  .top-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 100px;
+    height: 80vh;
+
+    @include mobile() {
+      flex-direction: column;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-family: var(--font-family-bold);
+      width: 50%;
+      font-size: 50px;
+      @include mobile() {
+        width: 100%;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+    }
+    img {
+      width: 500px;
+      @include mobile() {
+        width: 300px;
+      }
+    }
+  }
+}

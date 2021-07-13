@@ -1,0 +1,119 @@
+<div class="product-subscription">
+  <h1>Product List</h1>
+  <select
+    class="select-interval"
+    name=""
+    id=""
+    (change)="changeInterval($event)"
+  >
+    <option value="monthly">Monthly</option>
+    <option value="yearly">Yearly</option>
+  </select>
+  <div class="products-cards">
+    <div *ngIf="!products" class="spinner-grow loader " role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="_card" *ngFor="let product of products">
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">
+            <img
+              *ngIf="product.name == 'Enterprise'"
+              src="../../assets/images/diamond-icon.svg"
+            />
+            {{ product.name }}
+          </h4>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body-top">
+            <h1>Features</h1>
+            <div class="features">
+              <ul>
+                <li class="feature" *ngFor="let feature of product.features">
+                  <img src="../../assets/images/checked.svg" alt="" />
+                  {{ feature }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-body-bottom">
+            <h1>Plans</h1>
+            <div class="plans">
+              <ul>
+                <li *ngFor="let plan of product.plans">
+                  <div
+                    *ngIf="
+                      plan.interval == 'YEAR' || plan.paymentInterval == 'YEAR'
+                    "
+                  >
+                    ${{ plan.priceCents / 100 }}/year
+                  </div>
+                  <div
+                    *ngIf="
+                      plan.interval == 'MONTH' ||
+                      plan.paymentInterval == 'MONTH'
+                    "
+                  >
+                    ${{ plan.priceCents / 100 }}/month
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            (click)="modal.close('Save click')"
+          >
+            Buy Now
+          </button>
+        </div>
+      </ng-template>
+      <div class="card-top">
+        <h3>
+          <img
+            *ngIf="product.name == 'Enterprise'"
+            src="../../assets/images/diamond-icon.svg"
+          />
+          {{ product.name }}
+        </h3>
+        <div *ngFor="let pri of product.plans">
+          <div *ngIf="interval == 'monthly'">
+            <h1
+              *ngIf="pri.interval == 'MONTH' || pri.paymentInterval == 'MONTH'"
+            >
+              <span>$</span> {{ pri.priceCents / 100 }}
+            </h1>
+          </div>
+        </div>
+        <div *ngFor="let pri of product.plans">
+          <div *ngIf="interval == 'yearly'">
+            <h1 *ngIf="pri.interval == 'YEAR' || pri.paymentInterval == 'YEAR'">
+              <span>$</span> {{ pri.priceCents / 100 }}
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="card-bottom">
+        <!-- <div class="features">
+          <ul>
+            <li *ngFor="let feature of product.features">
+              {{ feature }}
+            </li>
+          </ul>
+        </div> -->
+        <button (click)="open(content)">DETAILS</button>
+      </div>
+    </div>
+  </div>
+</div>

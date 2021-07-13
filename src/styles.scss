@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./Scss_Partials/require.scss";
+@import "./Scss_Partials/variables.scss";
+@import "./Scss_Partials/size.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-regular) !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

@@ -1,0 +1,25 @@
+@import "../Scss_Partials/size";
+.navbar {
+  font-family: var(--font-family-bold);
+  background: #333333 !important;
+  .navbar-brand {
+    font-size: 1.5em;
+    margin-right: 1em;
+  }
+  .cust-nav {
+    font-family: var(--font-family-regular);
+    ul {
+      li {
+        margin-top: 0.5em;
+        a {
+          text-decoration: none;
+          color: white;
+          margin-right: 1em;
+          &:hover {
+            color: rgb(180, 180, 180);
+          }
+        }
+      }
+    }
+  }
+}
